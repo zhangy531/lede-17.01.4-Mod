@@ -52,7 +52,13 @@ jobs:
           sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler coreutils aria2
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
-
+      - name: 自定义插件主题
+        run: |
+          cd package
+          mkdir openwrt-packages
+          cd openwrt-packages
+          git clone https://github.com/rufengsuixing/luci-app-adguardhome.git
+          
           WORKING_DIR="$GITHUB_WORKSPACE"
           echo "WORKING_DIR=${WORKING_DIR}" >>$GITHUB_ENV
           cd "${WORKING_DIR}"
